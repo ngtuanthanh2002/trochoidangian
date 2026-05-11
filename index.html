@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Trò Chơi Dân Gian — Gìn giữ tinh hoa văn hóa Việt</title>
+    <meta name="description" content="Khám phá kho tàng trò chơi dân gian Việt Nam — nơi tuổi thơ, văn hóa và ký ức cùng hòa quyện." />
+    <meta name="theme-color" content="#5a2e00" />
+
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="apple-touch-icon" href="assets/favicon.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+    <!-- ============= HEADER ============= -->
+    <header class="site-header">
+        <div class="container nav">
+            <a href="#home" class="logo" aria-label="Trò Chơi Dân Gian">
+                <span class="logo-mark">T</span>
+                <span class="logo-text">
+                    <strong>Trò Chơi Dân Gian</strong>
+                    <small>Văn hóa Việt</small>
+                </span>
+            </a>
+
+            <nav id="primary-nav" aria-label="Điều hướng chính">
+                <ul class="nav-menu">
+                    <li><a href="#home">Trang chủ</a></li>
+                    <li><a href="#games">Trò chơi</a></li>
+                    <li><a href="#reviews">Đánh giá</a></li>
+                    <li><a href="#contact">Liên hệ</a></li>
+                </ul>
+            </nav>
+
+            <a href="#games" class="nav-cta">Khám phá ngay</a>
+
+            <button type="button" class="menu-toggle" aria-label="Mở menu" aria-expanded="false" aria-controls="primary-nav">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <line x1="3" y1="12" x2="21" y2="12"/>
+                    <line x1="3" y1="18" x2="21" y2="18"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main id="home">
+
+        <!-- ============= HERO ============= -->
+        <section class="hero" aria-label="Giới thiệu">
+            <div class="container">
+                <div class="hero-content reveal">
+                    <span class="eyebrow">Hồn Việt — Tuổi thơ — Ký ức</span>
+                    <h1 class="hero-title">
+                        Gìn giữ <em>tinh hoa</em><br>
+                        trò chơi dân gian Việt
+                    </h1>
+                    <p class="hero-desc">
+                        Một hành trình trở về với ký ức tuổi thơ, nơi tiếng cười rộn rã sân làng,
+                        nơi từng nhịp sạp, từng cánh diều, từng quả còn… kể câu chuyện ngàn đời
+                        của văn hóa dân gian Việt Nam.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#games" class="btn btn-primary">Khám phá trò chơi</a>
+                        <a href="#reviews" class="btn btn-outline">Cảm nhận cộng đồng</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div>
+                            <div class="stat-num">50+</div>
+                            <div class="stat-label">Trò chơi truyền thống</div>
+                        </div>
+                        <div>
+                            <div class="stat-num">3</div>
+                            <div class="stat-label">Miền Bắc — Trung — Nam</div>
+                        </div>
+                        <div>
+                            <div class="stat-num">10K+</div>
+                            <div class="stat-label">Người yêu mến</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============= GAMES ============= -->
+        <section class="games" id="games">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="eyebrow">Bộ sưu tập</span>
+                    <h2 class="section-title">Những trò chơi làm nên tuổi thơ</h2>
+                    <p class="section-subtitle">
+                        Chọn lọc 7 trò chơi dân gian tiêu biểu, gắn liền với hội làng,
+                        Tết cổ truyền và những buổi chiều quê mộc mạc.
+                    </p>
+                </div>
+
+                <div class="games-grid">
+
+                    <article class="game-card reveal">
+                        <div class="game-card-image">
+                            <span class="game-card-tag">Hội làng</span>
+                            <img src="assets/nhay-sap.jpg" alt="Nhảy sạp" loading="lazy" />
+                        </div>
+                        <div class="game-card-body">
+                            <h3 class="game-card-title">Nhảy sạp</h3>
+                            <p class="game-card-desc">
+                                Điệu nhảy đặc trưng của đồng bào Tây Bắc, hòa nhịp giữa
+                                tiếng tre và bước chân uyển chuyển trong các dịp lễ hội.
+                            </p>
+                            <a href="#" class="game-card-link">Xem chi tiết</a>
+                        </div>
+                    </article>
+
+                    <article class="game-card reveal">
+                        <div class="game-card-image">
+                            <span class="game-card-tag">Sân đình</span>
+                            <img src="assets/danh-du.jpg" alt="Đánh đu" loading="lazy" />
+                        </div>
+                        <div class="game-card-body">
+                            <h3 class="game-card-title">Đánh đu</h3>
+                            <p class="game-card-desc">
+                                Trò chơi không thể thiếu trong hội xuân, nơi đôi trai gái
+                                cùng đu bay giữa trời xuân, mang theo lời chúc may mắn.
+                            </p>
+                            <a href="#" class="game-card-link">Xem chi tiết</a>
+                        </div>
+                    </article>
+
+                    <article class="game-card reveal">
+                        <div class="game-card-image">
+                            <span class="game-card-tag">Tết cổ truyền</span>
+                            <img src="assets/nem-con.jpg" alt="Ném còn" loading="lazy" />
+                        </div>
+                        <div class="game-card-body">
+                            <h3 class="game-card-title">Ném còn</h3>
+                            <p class="game-card-desc">
+                                Quả còn rực rỡ bay qua vòng tròn cao giữa trời xuân —
+                                biểu tượng của khát vọng đoàn viên và mùa màng bội thu.
+                            </p>
+                            <a href="#" class="game-card-link">Xem chi tiết</a>
+                        </div>
+                    </article>
+
+                    <article class="game-card reveal">
+                        <div class="game-card-image">
+                            <span class="game-card-tag">Vui nhộn</span>
+                            <img src="assets/dap-nieu.jpg" alt="Đập niêu đất" loading="lazy" />
+                        </div>
+                        <div class="game-card-body">
+                            <h3 class="game-card-title">Đập niêu đất</h3>
+                            <p class="game-card-desc">
+                                Bịt mắt, cầm gậy, lần theo tiếng cổ vũ để đập trúng
+                                chiếc niêu treo trên cao — vừa hồi hộp vừa rộn rã tiếng cười.
+                            </p>
+                            <a href="#" class="game-card-link">Xem chi tiết</a>
+                        </div>
+                    </article>
+
+                    <article class="game-card reveal">
+                        <div class="game-card-image">
+                            <span class="game-card-tag">Khéo léo</span>
+                            <img src="assets/cau-kieu.jpg" alt="Đi cầu kiều" loading="lazy" />
+                        </div>
+                        <div class="game-card-body">
+                            <h3 class="game-card-title">Đi cầu kiều</h3>
+                            <p class="game-card-desc">
+                                Bước trên thân tre bắc qua ao làng, giữ thăng bằng để chạm
+                                được phần thưởng — thử thách cho sự khéo léo và can đảm.
+                            </p>
+                            <a href="#" class="game-card-link">Xem chi tiết</a>
+                        </div>
+                    </article>
+
+                    <article class="game-card reveal">
+                        <div class="game-card-image">
+                            <span class="game-card-tag">Đồng quê</span>
+                            <img src="assets/bat-vit.jpg" alt="Bắt vịt" loading="lazy" />
+                        </div>
+                        <div class="game-card-body">
+                            <h3 class="game-card-title">Bắt vịt</h3>
+                            <p class="game-card-desc">
+                                Trò chơi sôi động dưới ao làng ngày hội, mang đến tiếng cười
+                                giòn tan của trẻ thơ và không khí gắn kết cộng đồng.
+                            </p>
+                            <a href="#" class="game-card-link">Xem chi tiết</a>
+                        </div>
+                    </article>
+
+                    <article class="game-card reveal">
+                        <div class="game-card-image">
+                            <span class="game-card-tag">Trẻ thơ</span>
+                            <img src="assets/bap-benh.jpg" alt="Bập bênh" loading="lazy" />
+                        </div>
+                        <div class="game-card-body">
+                            <h3 class="game-card-title">Bập bênh</h3>
+                            <p class="game-card-desc">
+                                Trò chơi tuổi thơ giản dị bên sân nhà, dạy các em sự
+                                thăng bằng, sẻ chia và niềm vui khi cùng nhau chơi đùa.
+                            </p>
+                            <a href="#" class="game-card-link">Xem chi tiết</a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============= REVIEWS ============= -->
+        <section class="reviews" id="reviews">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="eyebrow">Cảm nhận</span>
+                    <h2 class="section-title">Người yêu mến nói gì về chúng tôi</h2>
+                    <p class="section-subtitle">
+                        Những chia sẻ chân thành từ cộng đồng yêu văn hóa truyền thống Việt Nam.
+                    </p>
+                </div>
+
+                <div class="reviews-grid">
+
+                    <div class="review-card reveal">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-quote">
+                            "Một trang web đẹp, mộc mạc mà tinh tế. Tôi như được sống lại
+                            tuổi thơ ở làng quê khi nhìn từng tấm hình, đọc từng dòng giới thiệu."
+                        </p>
+                        <div class="review-author">
+                            <div class="review-avatar">M</div>
+                            <div>
+                                <div class="review-name">Minh Anh</div>
+                                <div class="review-role">Giáo viên — Hà Nội</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card reveal">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-quote">
+                            "Mình cho các bé học sinh xem website này, các em rất thích thú
+                            và muốn được trải nghiệm các trò chơi dân gian ngoài đời thật."
+                        </p>
+                        <div class="review-author">
+                            <div class="review-avatar">T</div>
+                            <div>
+                                <div class="review-name">Thu Hà</div>
+                                <div class="review-role">Phụ huynh — Đà Nẵng</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card reveal">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-quote">
+                            "Thiết kế nhẹ nhàng, nội dung sâu sắc. Đây thật sự là nguồn tài liệu
+                            quý cho ai đang muốn tìm hiểu về văn hóa Việt Nam."
+                        </p>
+                        <div class="review-author">
+                            <div class="review-avatar">Q</div>
+                            <div>
+                                <div class="review-name">Quốc Bảo</div>
+                                <div class="review-role">Sinh viên — TP.HCM</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============= FOOTER ============= -->
+    <footer class="site-footer" id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#home" class="logo">
+                        <span class="logo-mark">T</span>
+                        <span class="logo-text">
+                            <strong>Trò Chơi Dân Gian</strong>
+                            <small>Văn hóa Việt</small>
+                        </span>
+                    </a>
+                    <p>
+                        Nơi tôn vinh và lan tỏa giá trị của những trò chơi dân gian Việt Nam —
+                        gìn giữ hồn quê cho thế hệ hôm nay và mai sau.
+                    </p>
+                    <div class="socials">
+                        <a href="#" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 10-11.6 9.9v-7H8v-2.9h2.4V9.7c0-2.4 1.4-3.7 3.6-3.7 1 0 2.1.2 2.1.2v2.3h-1.2c-1.2 0-1.5.7-1.5 1.5v1.8h2.6l-.4 2.9h-2.2v7A10 10 0 0022 12z"/></svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+                        </a>
+                        <a href="#" aria-label="YouTube">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 7s-.2-1.6-.8-2.3c-.8-.9-1.7-.9-2.1-1C17 3.4 12 3.4 12 3.4s-5 0-8.1.3c-.4.1-1.3.1-2.1 1C1.2 5.4 1 7 1 7S.8 8.9.8 10.7v1.6C.8 14.1 1 16 1 16s.2 1.6.8 2.3c.8.9 1.9.9 2.4 1 1.7.2 7.8.3 7.8.3s5 0 8.1-.3c.4-.1 1.3-.1 2.1-1 .6-.7.8-2.3.8-2.3s.2-1.9.2-3.7v-1.6C23.2 8.9 23 7 23 7zM9.7 14.6V8.1l6.4 3.3-6.4 3.2z"/></svg>
+                        </a>
+                        <a href="#" aria-label="TikTok">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.6 6.7a4.8 4.8 0 01-3.4-1.5 4.8 4.8 0 01-1.3-2.7h-3.3v13.1a2.4 2.4 0 11-2.4-2.4c.3 0 .5 0 .8.1V9.9a5.7 5.7 0 00-.8-.1A5.7 5.7 0 1014 15.6V9a8.1 8.1 0 005.6 1.8V7.5a4.8 4.8 0 010-.8z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Khám phá</h5>
+                    <ul>
+                        <li><a href="#home">Trang chủ</a></li>
+                        <li><a href="#games">Danh sách trò chơi</a></li>
+                        <li><a href="#reviews">Đánh giá</a></li>
+                        <li><a href="#contact">Liên hệ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Hỗ trợ</h5>
+                    <ul>
+                        <li><a href="#">Câu hỏi thường gặp</a></li>
+                        <li><a href="#">Hướng dẫn chơi</a></li>
+                        <li><a href="#">Điều khoản</a></li>
+                        <li><a href="#">Bảo mật</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Liên hệ</h5>
+                    <ul>
+                        <li class="contact-item">
+                            <span>✉</span>
+                            <span>hello@trochoidangian.vn</span>
+                        </li>
+                        <li class="contact-item">
+                            <span>☏</span>
+                            <span>+84 28 1234 5678</span>
+                        </li>
+                        <li class="contact-item">
+                            <span>⌂</span>
+                            <span>123 Hồn Quê, Quận 1, TP. Hồ Chí Minh</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Trò Chơi Dân Gian. Mộc mạc lưu giữ — Tự hào lan tỏa.</p>
+                <p><a href="#">Điều khoản</a> · <a href="#">Bảo mật</a> · <a href="#">Cookie</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js" defer></script>
+</body>
+</html>
