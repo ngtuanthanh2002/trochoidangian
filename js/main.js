@@ -21,9 +21,14 @@
 
     // ----- Header: trong suốt khi ở đầu trang, có nền khi cuộn -----
     const header = document.querySelector('.site-header');
+    const detailPage = document.body.classList.contains('page-game-detail');
 
     const updateHeader = () => {
         if (!header) return;
+        if (detailPage) {
+            header.classList.add('is-scrolled');
+            return;
+        }
         header.classList.toggle('is-scrolled', window.scrollY > 24);
     };
     updateHeader();

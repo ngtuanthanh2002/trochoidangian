@@ -70,6 +70,34 @@ Mỗi commit push lên `main` sẽ tự deploy production; các nhánh khác nh�
 - Cache trường thọ cho `assets/`, `css/`, `js/` (1 năm, `immutable`).
 - Headers bảo mật: `X-Content-Type-Options`, `Referrer-Policy`.
 
+## SEO & Social Preview — sau khi deploy
+
+`index.html` đã có đầy đủ metadata để hiển thị logo + ảnh preview khi share lên Google / Facebook / Zalo / Twitter, bao gồm:
+
+- **Open Graph** (`og:title`, `og:description`, `og:image`, …)
+- **Twitter Card** (`summary_large_image`)
+- **Schema.org JSON-LD** (`Organization` + `WebSite` + `WebPage`) — Google dùng để hiển thị logo trong Knowledge Graph.
+- **Favicon SVG** đa dạng `rel` (icon, apple-touch-icon, mask-icon).
+
+### Cần làm sau lần deploy đầu tiên
+
+1. **Đổi domain placeholder** trong `index.html`:
+   - Tìm `https://trochoidangian.vercel.app/` → thay bằng domain thật Vercel cấp (ví dụ `https://my-site.vercel.app/`) **hoặc** custom domain của bạn.
+   - Có 11 chỗ cần đổi — bạn có thể Find & Replace toàn file.
+
+2. **Yêu cầu Google crawl lại** (tuỳ chọn):
+   - Vào [Google Search Console](https://search.google.com/search-console) → Add Property → verify domain.
+   - Submit URL `https://your-domain.com/` qua tab "URL Inspection".
+
+3. **Refresh cache OG khi đã chỉnh metadata**:
+   - Facebook / Messenger / Zalo: [Sharing Debugger](https://developers.facebook.com/tools/debug/) → nhập URL → bấm "Scrape Again".
+   - Twitter: [Card Validator](https://cards-dev.twitter.com/validator).
+   - LinkedIn: [Post Inspector](https://www.linkedin.com/post-inspector/).
+
+### Lưu ý ảnh og:image
+
+Hiện tại dùng `assets/hero-banner.png` (bức tranh dân gian gốc). Để tối ưu hơn, có thể chuẩn bị một ảnh **1200 × 630 px** chuyên dụng cho social share (logo + tiêu đề), bỏ vào `assets/` rồi đổi `og:image` thành ảnh đó. Hiện tại ảnh gốc vẫn hiển thị tốt trên hầu hết nền tảng.
+
 ## Tính năng
 
 - Header trong suốt khi ở đầu trang, có nền khi cuộn xuống.
