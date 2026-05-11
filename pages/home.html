@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Trò Chơi Dân Gian — Gìn giữ tinh hoa văn hóa Việt</title>
+    <meta name="description" content="Khám phá kho tàng trò chơi dân gian Việt Nam — nơi tuổi thơ, văn hóa và ký ức cùng hòa quyện." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <style>
+        /* =========================================================
+           1. RESET & ROOT VARIABLES
+           ========================================================= */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --beige: #eaded2;
+            --beige-light: #f5efe6;
+            --beige-dark: #ddcdb9;
+            --brown: #974b00;
+            --brown-dark: #5a2e00;
+            --brown-soft: #b8743a;
+            --white: #ffffff;
+            --ink: #2a1a0a;
+            --muted: #7a6a58;
+
+            --radius-sm: 10px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+
+            --shadow-sm: 0 2px 8px rgba(90, 46, 0, 0.06);
+            --shadow-md: 0 8px 28px rgba(90, 46, 0, 0.10);
+            --shadow-lg: 0 18px 50px rgba(90, 46, 0, 0.16);
+
+            --container: 1200px;
+            --transition: 0.3s ease;
+
+            --font-display: 'Playfair Display', 'Be Vietnam Pro', serif;
+            --font-body: 'Be Vietnam Pro', system-ui, -apple-system, 'Segoe UI', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--ink);
+            background-color: var(--beige-light);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--container);
+            margin-inline: auto;
+            padding-inline: 24px;
+        }
+
+        /* Section general */
+        section {
+            padding: 96px 0;
+        }
+
+        .section-head {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 56px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--brown);
+            padding: 6px 16px;
+            border: 1px solid var(--brown);
+            border-radius: 999px;
+            margin-bottom: 18px;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: clamp(1.9rem, 3.5vw, 2.7rem);
+            color: var(--brown-dark);
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            color: var(--muted);
+            font-size: 1.02rem;
+        }
+
+        /* =========================================================
+           2. HEADER
+           ========================================================= */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding-left: env(safe-area-inset-left, 0px);
+            padding-right: env(safe-area-inset-right, 0px);
+            background: transparent;
+            border-bottom: 1px solid transparent;
+            transition: background 0.35s ease,
+                        border-color 0.35s ease,
+                        box-shadow 0.35s ease,
+                        backdrop-filter 0.35s ease;
+        }
+        .site-header.is-scrolled {
+            background: rgba(245, 239, 230, 0.92);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom-color: rgba(151, 75, 0, 0.08);
+            box-shadow: 0 2px 18px rgba(90, 46, 0, 0.06);
+        }
+
+        /* Khi header trong suốt (đè lên hero) → dùng tone sáng */
+        .site-header:not(.is-scrolled) .logo-text strong { color: var(--beige-light); }
+        .site-header:not(.is-scrolled) .logo-text small { color: rgba(245, 239, 230, 0.75); }
+        .site-header:not(.is-scrolled) .logo-mark {
+            background: rgba(245, 239, 230, 0.15);
+            color: var(--beige-light);
+            box-shadow: inset 0 0 0 2px rgba(245, 239, 230, 0.85),
+                        0 0 0 1px rgba(245, 239, 230, 0.4);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+        }
+        .site-header:not(.is-scrolled) .nav-menu a {
+            color: var(--beige-light);
+            text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+        }
+        .site-header:not(.is-scrolled) .nav-menu a:hover {
+            color: var(--white);
+        }
+        .site-header:not(.is-scrolled) .nav-menu a::after {
+            background: var(--beige-light);
+        }
+        .site-header:not(.is-scrolled) .menu-toggle {
+            color: var(--beige-light);
+        }
+
+        .nav {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 0;
+            padding-top: max(18px, env(safe-area-inset-top, 0px));
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            color: var(--brown-dark);
+        }
+
+        .logo-mark {
+            flex: 0 0 auto;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--brown);
+            color: var(--beige-light);
+            display: grid;
+            place-items: center;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.15rem;
+            line-height: 1;
+            box-shadow: inset 0 0 0 3px var(--beige-light), 0 0 0 1px var(--brown);
+        }
+
+        .logo-text {
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 6px;
+            line-height: 1.2;
+        }
+        .logo-text strong {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--brown-dark);
+            letter-spacing: 0.005em;
+        }
+        .logo-text small {
+            display: block;
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 0.66rem;
+            letter-spacing: 0.26em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 0;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--ink);
+            position: relative;
+            padding: 6px 0;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background: var(--brown);
+            transition: width var(--transition);
+        }
+
+        .nav-menu a:hover {
+            color: var(--brown);
+        }
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--brown);
+            color: var(--white);
+            padding: 10px 22px;
+            border-radius: 999px;
+            font-weight: 500;
+            font-size: 0.92rem;
+            transition: background var(--transition), transform var(--transition);
+        }
+        .nav-cta:hover {
+            background: var(--brown-dark);
+            transform: translateY(-1px);
+        }
+
+        .menu-toggle {
+            display: none;
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            color: var(--brown-dark);
+        }
+        .menu-toggle svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* =========================================================
+           3. HERO SECTION
+           ========================================================= */
+        .hero {
+            position: relative;
+            box-sizing: border-box;
+            /* Full chiều cao màn hình — dvh ưu tiên (đúng cả mobile có thanh URL co/giãn) */
+            min-height: 100vh;
+            min-height: 100svh;
+            min-height: 100dvh;
+            padding-top: calc(env(safe-area-inset-top, 0px) + 5.75rem);
+            padding-bottom: max(1.5rem, env(safe-area-inset-bottom, 0px));
+            padding-left: env(safe-area-inset-left, 0px);
+            padding-right: env(safe-area-inset-right, 0px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            isolation: isolate;
+            color: var(--white);
+            background:
+                url('../assets/Hero%20Banner.png') center / cover no-repeat,
+                var(--brown-dark);
+        }
+
+        /* Overlay nâu-tối tổng thể để chữ sáng nổi bật trên ảnh */
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background:
+                radial-gradient(
+                    ellipse at center,
+                    rgba(42, 26, 10, 0.45) 0%,
+                    rgba(42, 26, 10, 0.65) 100%
+                ),
+                linear-gradient(180deg,
+                    rgba(42, 26, 10, 0.45) 0%,
+                    rgba(42, 26, 10, 0.30) 50%,
+                    rgba(42, 26, 10, 0.55) 100%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .hero-content .eyebrow {
+            margin-bottom: 1.75rem;
+            color: var(--beige-light);
+            border-color: rgba(245, 239, 230, 0.7);
+            background: rgba(42, 26, 10, 0.35);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 2.75rem;
+            line-height: 1.4;
+            letter-spacing: 0.005em;
+            color: var(--white);
+            margin-bottom: 1.75rem;
+            text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45),
+                         0 1px 3px rgba(0, 0, 0, 0.35);
+        }
+        .hero-title em {
+            font-style: italic;
+            color: var(--beige);
+            font-weight: 600;
+        }
+
+        .hero-desc {
+            font-size: 1.0625rem;
+            line-height: 1.9;
+            color: rgba(245, 239, 230, 0.95);
+            max-width: 620px;
+            margin: 0 auto 2.25rem;
+            text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 2.75rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 999px;
+            font-weight: 500;
+            font-size: 0.98rem;
+            transition: all var(--transition);
+        }
+
+        .btn-primary {
+            background: var(--brown);
+            color: var(--white);
+            box-shadow: var(--shadow-sm);
+        }
+        .btn-primary:hover {
+            background: var(--brown-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-outline {
+            border: 1.5px solid var(--brown);
+            color: var(--brown-dark);
+            background: transparent;
+        }
+        .btn-outline:hover {
+            background: var(--brown);
+            color: var(--white);
+        }
+
+        /* Trong hero — outline button đổi sang tông sáng để nổi trên ảnh tối */
+        .hero .btn-outline {
+            border-color: rgba(245, 239, 230, 0.85);
+            color: var(--beige-light);
+            background: rgba(42, 26, 10, 0.25);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+        }
+        .hero .btn-outline:hover {
+            background: var(--beige-light);
+            color: var(--brown-dark);
+            border-color: var(--beige-light);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 56px;
+            padding-top: 1.75rem;
+            border-top: 1px solid rgba(245, 239, 230, 0.25);
+            max-width: 640px;
+            margin: 0 auto;
+        }
+        .stat-num {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.7rem;
+            color: var(--beige-light);
+            line-height: 1.1;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+        }
+        .stat-label {
+            font-size: 0.82rem;
+            line-height: 1.55;
+            color: rgba(245, 239, 230, 0.78);
+            margin-top: 0.5rem;
+        }
+
+        /* Bo viền dưới hero để chuyển mượt sang section Games */
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: auto 0 0 0;
+            height: min(140px, 18vh);
+            pointer-events: none;
+            z-index: 0;
+            background: linear-gradient(
+                to bottom,
+                transparent,
+                var(--beige-light) 92%
+            );
+        }
+
+        /* =========================================================
+           4. GAMES GRID
+           ========================================================= */
+        .games {
+            background: var(--beige-light);
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 28px;
+        }
+
+        .game-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform var(--transition), box-shadow var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+        .game-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .game-card-image {
+            position: relative;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            background: var(--beige);
+        }
+        .game-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .game-card:hover .game-card-image img {
+            transform: scale(1.06);
+        }
+
+        .game-card-tag {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: rgba(245, 239, 230, 0.95);
+            color: var(--brown-dark);
+            padding: 5px 12px;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .game-card-body {
+            padding: 22px 22px 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-card-title {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1.32rem;
+            color: var(--brown-dark);
+            margin-bottom: 10px;
+        }
+
+        .game-card-desc {
+            color: var(--muted);
+            font-size: 0.94rem;
+            line-height: 1.65;
+            margin-bottom: 18px;
+            flex: 1;
+        }
+
+        .game-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--brown);
+            font-weight: 500;
+            font-size: 0.92rem;
+            align-self: flex-start;
+        }
+        .game-card-link::after {
+            content: '→';
+            transition: transform var(--transition);
+        }
+        .game-card-link:hover {
+            color: var(--brown-dark);
+        }
+        .game-card-link:hover::after {
+            transform: translateX(4px);
+        }
+
+        /* =========================================================
+           5. REVIEWS SECTION
+           ========================================================= */
+        .reviews {
+            background: var(--beige);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .review-card {
+            background: var(--beige-light);
+            border-radius: var(--radius-md);
+            padding: 32px 28px;
+            border: 1px solid rgba(151, 75, 0, 0.06);
+            display: flex;
+            flex-direction: column;
+            transition: transform var(--transition), box-shadow var(--transition);
+        }
+        .review-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .review-stars {
+            color: var(--brown);
+            font-size: 1rem;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+
+        .review-quote {
+            color: var(--ink);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 24px;
+            flex: 1;
+            font-style: italic;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(151, 75, 0, 0.1);
+        }
+
+        .review-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--brown);
+            color: var(--beige-light);
+            display: grid;
+            place-items: center;
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        .review-name {
+            font-weight: 600;
+            color: var(--brown-dark);
+            font-size: 0.96rem;
+        }
+        .review-role {
+            font-size: 0.82rem;
+            color: var(--muted);
+        }
+
+        /* =========================================================
+           6. FOOTER
+           ========================================================= */
+        .site-footer {
+            background: var(--brown-dark);
+            color: var(--beige);
+            padding: 72px 0 24px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 56px;
+        }
+
+        .footer-brand .logo {
+            color: var(--beige-light);
+            margin-bottom: 18px;
+        }
+        .footer-brand .logo-mark {
+            background: var(--beige-light);
+            color: var(--brown-dark);
+            box-shadow: inset 0 0 0 3px var(--brown-dark), 0 0 0 1px var(--beige-light);
+        }
+        .footer-brand .logo-text strong {
+            color: var(--beige-light);
+        }
+        .footer-brand .logo-text small {
+            color: rgba(234, 222, 210, 0.6);
+        }
+
+        .footer-brand p {
+            color: rgba(234, 222, 210, 0.7);
+            font-size: 0.94rem;
+            max-width: 320px;
+            line-height: 1.7;
+        }
+
+        .footer-col h5 {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .footer-col a {
+            color: rgba(234, 222, 210, 0.75);
+            font-size: 0.94rem;
+        }
+        .footer-col a:hover {
+            color: var(--white);
+        }
+
+        .footer-col .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: rgba(234, 222, 210, 0.75);
+            font-size: 0.92rem;
+            line-height: 1.55;
+        }
+
+        .socials {
+            display: flex;
+            gap: 12px;
+            margin-top: 18px;
+        }
+        .socials a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(234, 222, 210, 0.1);
+            display: grid;
+            place-items: center;
+            transition: background var(--transition), transform var(--transition);
+        }
+        .socials a:hover {
+            background: var(--beige-light);
+            color: var(--brown-dark);
+            transform: translateY(-2px);
+        }
+        .socials svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .footer-bottom {
+            padding-top: 24px;
+            border-top: 1px solid rgba(234, 222, 210, 0.12);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            color: rgba(234, 222, 210, 0.6);
+            font-size: 0.86rem;
+        }
+        .footer-bottom a:hover {
+            color: var(--white);
+        }
+
+        /* =========================================================
+           7. RESPONSIVE
+           ========================================================= */
+        @media (max-width: 992px) {
+            section { padding: 72px 0; }
+
+            .hero {
+                padding-top: calc(env(safe-area-inset-top, 0px) + 5.25rem);
+                padding-bottom: max(1.25rem, env(safe-area-inset-bottom, 0px));
+            }
+            .hero-content { padding: 0 20px; }
+
+            .reviews-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 720px) {
+            section { padding: 56px 0; }
+            .container { padding-inline: 20px; }
+
+            .nav > .nav-cta {
+                display: none;
+            }
+            .menu-toggle {
+                display: grid;
+                place-items: center;
+            }
+
+            /* Menu mobile: panel full-width dưới header */
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                padding: 8px 16px max(20px, env(safe-area-inset-bottom, 0px));
+                margin: 0;
+                background: var(--beige-light);
+                border-top: 1px solid rgba(151, 75, 0, 0.1);
+                box-shadow: 0 16px 32px rgba(90, 46, 0, 0.18);
+                z-index: 99;
+            }
+            .site-header.nav-open .nav-menu {
+                display: flex;
+            }
+            .site-header .nav-menu li + li {
+                border-top: 1px solid rgba(151, 75, 0, 0.08);
+            }
+            /* Override mọi rule màu chữ tone sáng từ header transparent */
+            .site-header.nav-open .nav-menu a,
+            .site-header:not(.is-scrolled) .nav-menu a,
+            .site-header.is-scrolled .nav-menu a,
+            .site-header .nav-menu a {
+                display: block;
+                padding: 14px 12px;
+                font-size: 1rem;
+                font-weight: 500;
+                color: var(--brown-dark);
+                background: transparent;
+                text-shadow: none;
+                border-radius: 0;
+            }
+            .site-header .nav-menu a::after {
+                display: none;
+            }
+            .site-header .nav-menu a:hover,
+            .site-header .nav-menu a:focus {
+                background: rgba(151, 75, 0, 0.08);
+                color: var(--brown);
+            }
+
+            /* Khi mở menu: header có nền be đậm hẳn để tách khỏi hero */
+            .site-header.nav-open {
+                background: var(--beige-light);
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+                border-bottom-color: rgba(151, 75, 0, 0.1);
+                box-shadow: 0 4px 14px rgba(90, 46, 0, 0.08);
+            }
+            .site-header.nav-open:not(.is-scrolled) .logo-text strong,
+            .site-header.nav-open.is-scrolled .logo-text strong {
+                color: var(--brown-dark);
+            }
+            .site-header.nav-open:not(.is-scrolled) .logo-text small,
+            .site-header.nav-open.is-scrolled .logo-text small {
+                color: var(--muted);
+            }
+            .site-header.nav-open:not(.is-scrolled) .logo-mark,
+            .site-header.nav-open.is-scrolled .logo-mark {
+                background: var(--brown);
+                color: var(--beige-light);
+                box-shadow: inset 0 0 0 3px var(--beige-light), 0 0 0 1px var(--brown);
+                backdrop-filter: none;
+            }
+            .site-header.nav-open .menu-toggle {
+                color: var(--brown-dark);
+            }
+
+            .hero {
+                padding-top: calc(env(safe-area-inset-top, 0px) + 5rem);
+                padding-bottom: max(1.5rem, env(safe-area-inset-bottom, 0px));
+                align-items: center;
+            }
+            .logo-text {
+                gap: 8px;
+            }
+            .logo-text strong {
+                font-size: 1.1rem;
+            }
+            .logo-text small {
+                font-size: 0.65rem;
+                letter-spacing: 0.2em;
+            }
+            .logo-mark {
+                width: 40px;
+                height: 40px;
+                font-size: 1.05rem;
+            }
+            .hero-content {
+                padding: 0 24px;
+                width: 100%;
+                max-width: 100%;
+            }
+            .hero-content .eyebrow {
+                margin-bottom: 1.5rem;
+                font-size: 0.7rem;
+                letter-spacing: 0.16em;
+                padding: 7px 14px;
+            }
+            .hero-title {
+                font-size: 1.6rem;
+                line-height: 1.5;
+                margin-bottom: 1.25rem;
+            }
+            .hero-desc {
+                font-size: 0.95rem;
+                line-height: 1.95;
+                margin-bottom: 1.75rem;
+                max-width: 32rem;
+            }
+            .hero-actions {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 14px;
+                margin-bottom: 2rem;
+            }
+            .hero .btn {
+                justify-content: center;
+                width: 100%;
+                padding: 13px 20px;
+                font-size: 1rem;
+            }
+            /* Tăng độ tối overlay trên mobile để chữ vẫn rõ khi ảnh bị crop */
+            .hero::before {
+                background:
+                    linear-gradient(180deg,
+                        rgba(42, 26, 10, 0.55) 0%,
+                        rgba(42, 26, 10, 0.45) 50%,
+                        rgba(42, 26, 10, 0.65) 100%);
+            }
+            .hero::after {
+                height: 56px;
+            }
+            .hero-stats {
+                gap: 10px;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                padding-top: 1.5rem;
+                margin-top: 0;
+                max-width: 100%;
+            }
+            .hero-stats > div {
+                flex: 1;
+                min-width: 0;
+                text-align: center;
+            }
+            .stat-num {
+                font-size: 1.35rem;
+                line-height: 1.2;
+            }
+            .stat-label {
+                font-size: 0.7rem;
+                line-height: 1.55;
+                margin-top: 0.5rem;
+                hyphens: auto;
+                word-break: break-word;
+            }
+
+            .section-head { margin-bottom: 40px; }
+            .games-grid {
+                grid-template-columns: 1fr;
+                gap: 22px;
+            }
+
+            .reviews-grid { grid-template-columns: 1fr; }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 36px;
+                margin-bottom: 40px;
+            }
+            .footer-bottom {
+                justify-content: center;
+                text-align: center;
+            }
+        }
+
+        /* Subtle reveal animation */
+        @media (prefers-reduced-motion: no-preference) {
+            .reveal {
+                opacity: 0;
+                transform: translateY(18px);
+                transition: opacity 0.7s ease, transform 0.7s ease;
+            }
+            .reveal.is-visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============= HEADER ============= -->
+    <header class="site-header">
+        <div class="container nav">
+            <a href="#home" class="logo" aria-label="Trò Chơi Dân Gian">
+                <span class="logo-mark">T</span>
+                <span class="logo-text">
+                    <strong>Trò Chơi Dân Gian</strong>
+                    <small>Văn hóa Việt</small>
+                </span>
+            </a>
+
+            <nav id="primary-nav" aria-label="Điều hướng chính">
+                <ul class="nav-menu">
+                    <li><a href="#home">Trang chủ</a></li>
+                    <li><a href="#games">Trò chơi</a></li>
+                    <li><a href="#reviews">Đánh giá</a></li>
+                    <li><a href="#contact">Liên hệ</a></li>
+                </ul>
+            </nav>
+
+            <a href="#games" class="nav-cta">Khám phá ngay</a>
+
+            <button type="button" class="menu-toggle" aria-label="Mở menu" aria-expanded="false" aria-controls="primary-nav">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <line x1="3" y1="12" x2="21" y2="12"/>
+                    <line x1="3" y1="18" x2="21" y2="18"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main id="home">
+
+        <!-- ============= HERO ============= -->
+        <section class="hero" aria-label="Giới thiệu">
+            <div class="container">
+                <div class="hero-content reveal">
+                    <span class="eyebrow">Hồn Việt — Tuổi thơ — Ký ức</span>
+                    <h1 class="hero-title">
+                        Gìn giữ <em>tinh hoa</em><br>
+                        trò chơi dân gian Việt
+                    </h1>
+                    <p class="hero-desc">
+                        Một hành trình trở về với ký ức tuổi thơ, nơi tiếng cười rộn rã sân làng,
+                        nơi từng nhịp sạp, từng cánh diều, từng quả còn… kể câu chuyện ngàn đời
+                        của văn hóa dân gian Việt Nam.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#games" class="btn btn-primary">Khám phá trò chơi</a>
+                        <a href="#reviews" class="btn btn-outline">Cảm nhận cộng đồng</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div>
+                            <div class="stat-num">50+</div>
+                            <div class="stat-label">Trò chơi truyền thống</div>
+                        </div>
+                        <div>
+                            <div class="stat-num">3</div>
+                            <div class="stat-label">Miền Bắc — Trung — Nam</div>
+                        </div>
+                        <div>
+                            <div class="stat-num">10K+</div>
+                            <div class="stat-label">Người yêu mến</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============= GAMES ============= -->
+        <section class="games" id="games">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="eyebrow">Bộ sưu tập</span>
+                    <h2 class="section-title">Những trò chơi làm nên tuổi thơ</h2>
+                    <p class="section-subtitle">
+                        Chọn lọc 7 trò chơi dân gian tiêu biểu, gắn liền với hội làng,
+                        Tết cổ truyền và những buổi chiều quê mộc mạc.
+                    </p>
+                </div>
+
+                <div class="games-grid">
+
+                    <article class="game-card reveal">
+                        <div class="game-card-image">
+                            <span class="game-card-tag">Hội làng</span>
+                            <img src="../assets/nhảy sạp chuẩn.jpg" alt="Nhảy sạp" loading="lazy" />
+                        </div>
+                        <div class="game-card-body">
+                            <h3 class="game-card-title">Nhảy sạp</h3>
+                            <p class="game-card-desc">
+                                Điệu nhảy đặc trưng của đồng bào Tây Bắc, hòa nhịp giữa
+                                tiếng tre và bước chân uyển chuyển trong các dịp lễ hội.
+                            </p>
+                            <a href="#" class="game-card-link">Xem chi tiết</a>
+                        </div>
+                    </article>
+
+                    <article class="game-card reveal">
+                        <div class="game-card-image">
+                            <span class="game-card-tag">Sân đình</span>
+                            <img src="../assets/đánh đu chuẩn.jpg" alt="Đánh đu" loading="lazy" />
+                        </div>
+                        <div class="game-card-body">
+                            <h3 class="game-card-title">Đánh đu</h3>
+                            <p class="game-card-desc">
+                                Trò chơi không thể thiếu trong hội xuân, nơi đôi trai gái
+                                cùng đu bay giữa trời xuân, mang theo lời chúc may mắn.
+                            </p>
+                            <a href="#" class="game-card-link">Xem chi tiết</a>
+                        </div>
+                    </article>
+
+                    <article class="game-card reveal">
+                        <div class="game-card-image">
+                            <span class="game-card-tag">Tết cổ truyền</span>
+                            <img src="../assets/ném còn chuẩn.jpg" alt="Ném còn" loading="lazy" />
+                        </div>
+                        <div class="game-card-body">
+                            <h3 class="game-card-title">Ném còn</h3>
+                            <p class="game-card-desc">
+                                Quả còn rực rỡ bay qua vòng tròn cao giữa trời xuân —
+                                biểu tượng của khát vọng đoàn viên và mùa màng bội thu.
+                            </p>
+                            <a href="#" class="game-card-link">Xem chi tiết</a>
+                        </div>
+                    </article>
+
+                    <article class="game-card reveal">
+                        <div class="game-card-image">
+                            <span class="game-card-tag">Vui nhộn</span>
+                            <img src="../assets/đập niêu chuẩn.jpg" alt="Đập niêu đất" loading="lazy" />
+                        </div>
+                        <div class="game-card-body">
+                            <h3 class="game-card-title">Đập niêu đất</h3>
+                            <p class="game-card-desc">
+                                Bịt mắt, cầm gậy, lần theo tiếng cổ vũ để đập trúng
+                                chiếc niêu treo trên cao — vừa hồi hộp vừa rộn rã tiếng cười.
+                            </p>
+                            <a href="#" class="game-card-link">Xem chi tiết</a>
+                        </div>
+                    </article>
+
+                    <article class="game-card reveal">
+                        <div class="game-card-image">
+                            <span class="game-card-tag">Khéo léo</span>
+                            <img src="../assets/cầu kiều chuẩn.jpg" alt="Đi cầu kiều" loading="lazy" />
+                        </div>
+                        <div class="game-card-body">
+                            <h3 class="game-card-title">Đi cầu kiều</h3>
+                            <p class="game-card-desc">
+                                Bước trên thân tre bắc qua ao làng, giữ thăng bằng để chạm
+                                được phần thưởng — thử thách cho sự khéo léo và can đảm.
+                            </p>
+                            <a href="#" class="game-card-link">Xem chi tiết</a>
+                        </div>
+                    </article>
+
+                    <article class="game-card reveal">
+                        <div class="game-card-image">
+                            <span class="game-card-tag">Đồng quê</span>
+                            <img src="../assets/bắt vịt chuẩn.jpg" alt="Bắt vịt" loading="lazy" />
+                        </div>
+                        <div class="game-card-body">
+                            <h3 class="game-card-title">Bắt vịt</h3>
+                            <p class="game-card-desc">
+                                Trò chơi sôi động dưới ao làng ngày hội, mang đến tiếng cười
+                                giòn tan của trẻ thơ và không khí gắn kết cộng đồng.
+                            </p>
+                            <a href="#" class="game-card-link">Xem chi tiết</a>
+                        </div>
+                    </article>
+
+                    <article class="game-card reveal">
+                        <div class="game-card-image">
+                            <span class="game-card-tag">Trẻ thơ</span>
+                            <img src="../assets/bập bênh chuản.jpg" alt="Bập bênh" loading="lazy" />
+                        </div>
+                        <div class="game-card-body">
+                            <h3 class="game-card-title">Bập bênh</h3>
+                            <p class="game-card-desc">
+                                Trò chơi tuổi thơ giản dị bên sân nhà, dạy các em sự
+                                thăng bằng, sẻ chia và niềm vui khi cùng nhau chơi đùa.
+                            </p>
+                            <a href="#" class="game-card-link">Xem chi tiết</a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============= REVIEWS ============= -->
+        <section class="reviews" id="reviews">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="eyebrow">Cảm nhận</span>
+                    <h2 class="section-title">Người yêu mến nói gì về chúng tôi</h2>
+                    <p class="section-subtitle">
+                        Những chia sẻ chân thành từ cộng đồng yêu văn hóa truyền thống Việt Nam.
+                    </p>
+                </div>
+
+                <div class="reviews-grid">
+
+                    <div class="review-card reveal">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-quote">
+                            "Một trang web đẹp, mộc mạc mà tinh tế. Tôi như được sống lại
+                            tuổi thơ ở làng quê khi nhìn từng tấm hình, đọc từng dòng giới thiệu."
+                        </p>
+                        <div class="review-author">
+                            <div class="review-avatar">M</div>
+                            <div>
+                                <div class="review-name">Minh Anh</div>
+                                <div class="review-role">Giáo viên — Hà Nội</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card reveal">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-quote">
+                            "Mình cho các bé học sinh xem website này, các em rất thích thú
+                            và muốn được trải nghiệm các trò chơi dân gian ngoài đời thật."
+                        </p>
+                        <div class="review-author">
+                            <div class="review-avatar">T</div>
+                            <div>
+                                <div class="review-name">Thu Hà</div>
+                                <div class="review-role">Phụ huynh — Đà Nẵng</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card reveal">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-quote">
+                            "Thiết kế nhẹ nhàng, nội dung sâu sắc. Đây thật sự là nguồn tài liệu
+                            quý cho ai đang muốn tìm hiểu về văn hóa Việt Nam."
+                        </p>
+                        <div class="review-author">
+                            <div class="review-avatar">Q</div>
+                            <div>
+                                <div class="review-name">Quốc Bảo</div>
+                                <div class="review-role">Sinh viên — TP.HCM</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============= FOOTER ============= -->
+    <footer class="site-footer" id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#home" class="logo">
+                        <span class="logo-mark">T</span>
+                        <span class="logo-text">
+                            <strong>Trò Chơi Dân Gian</strong>
+                            <small>Văn hóa Việt</small>
+                        </span>
+                    </a>
+                    <p>
+                        Nơi tôn vinh và lan tỏa giá trị của những trò chơi dân gian Việt Nam —
+                        gìn giữ hồn quê cho thế hệ hôm nay và mai sau.
+                    </p>
+                    <div class="socials">
+                        <a href="#" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 10-11.6 9.9v-7H8v-2.9h2.4V9.7c0-2.4 1.4-3.7 3.6-3.7 1 0 2.1.2 2.1.2v2.3h-1.2c-1.2 0-1.5.7-1.5 1.5v1.8h2.6l-.4 2.9h-2.2v7A10 10 0 0022 12z"/></svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+                        </a>
+                        <a href="#" aria-label="YouTube">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 7s-.2-1.6-.8-2.3c-.8-.9-1.7-.9-2.1-1C17 3.4 12 3.4 12 3.4s-5 0-8.1.3c-.4.1-1.3.1-2.1 1C1.2 5.4 1 7 1 7S.8 8.9.8 10.7v1.6C.8 14.1 1 16 1 16s.2 1.6.8 2.3c.8.9 1.9.9 2.4 1 1.7.2 7.8.3 7.8.3s5 0 8.1-.3c.4-.1 1.3-.1 2.1-1 .6-.7.8-2.3.8-2.3s.2-1.9.2-3.7v-1.6C23.2 8.9 23 7 23 7zM9.7 14.6V8.1l6.4 3.3-6.4 3.2z"/></svg>
+                        </a>
+                        <a href="#" aria-label="TikTok">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.6 6.7a4.8 4.8 0 01-3.4-1.5 4.8 4.8 0 01-1.3-2.7h-3.3v13.1a2.4 2.4 0 11-2.4-2.4c.3 0 .5 0 .8.1V9.9a5.7 5.7 0 00-.8-.1A5.7 5.7 0 1014 15.6V9a8.1 8.1 0 005.6 1.8V7.5a4.8 4.8 0 010-.8z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Khám phá</h5>
+                    <ul>
+                        <li><a href="#home">Trang chủ</a></li>
+                        <li><a href="#games">Danh sách trò chơi</a></li>
+                        <li><a href="#reviews">Đánh giá</a></li>
+                        <li><a href="#contact">Liên hệ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Hỗ trợ</h5>
+                    <ul>
+                        <li><a href="#">Câu hỏi thường gặp</a></li>
+                        <li><a href="#">Hướng dẫn chơi</a></li>
+                        <li><a href="#">Điều khoản</a></li>
+                        <li><a href="#">Bảo mật</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Liên hệ</h5>
+                    <ul>
+                        <li class="contact-item">
+                            <span>✉</span>
+                            <span>hello@trochoidangian.vn</span>
+                        </li>
+                        <li class="contact-item">
+                            <span>☏</span>
+                            <span>+84 28 1234 5678</span>
+                        </li>
+                        <li class="contact-item">
+                            <span>⌂</span>
+                            <span>123 Hồn Quê, Quận 1, TP. Hồ Chí Minh</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Trò Chơi Dân Gian. Mộc mạc lưu giữ — Tự hào lan tỏa.</p>
+                <p><a href="#">Điều khoản</a> · <a href="#">Bảo mật</a> · <a href="#">Cookie</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Reveal on scroll
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach((e) => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('is-visible');
+                    io.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+        // Header: trong suốt khi ở trên cùng, có nền khi cuộn xuống
+        const header = document.querySelector('.site-header');
+        const updateHeader = () => {
+            if (!header) return;
+            if (window.scrollY > 24) {
+                header.classList.add('is-scrolled');
+            } else {
+                header.classList.remove('is-scrolled');
+            }
+        };
+        updateHeader();
+        window.addEventListener('scroll', updateHeader, { passive: true });
+
+        // Mobile menu toggle
+        const toggle = document.querySelector('.menu-toggle');
+        const menu = document.querySelector('#primary-nav .nav-menu');
+        const closeNav = () => {
+            if (!header) return;
+            header.classList.remove('nav-open');
+            if (toggle) {
+                toggle.setAttribute('aria-expanded', 'false');
+                toggle.setAttribute('aria-label', 'Mở menu');
+            }
+            document.body.style.overflow = '';
+        };
+        if (toggle && menu && header) {
+            toggle.addEventListener('click', () => {
+                const open = header.classList.toggle('nav-open');
+                toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+                toggle.setAttribute('aria-label', open ? 'Đóng menu' : 'Mở menu');
+                document.body.style.overflow = open ? 'hidden' : '';
+            });
+            menu.querySelectorAll('a').forEach((a) => {
+                a.addEventListener('click', closeNav);
+            });
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 720) closeNav();
+            });
+        }
+    </script>
+
+</body>
+</html>
